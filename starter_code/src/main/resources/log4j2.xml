@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+        <Appenders>
+            <Console name="console" target="SYSTEM_OUT">
+                <PatternLayout
+                        pattern="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" />
+            </Console>
+
+            <SplunkHttp
+                    name="splunkhttp"
+                    url="http://localhost:8088"
+                    token="9e4b8c8d-4ec9-41cf-b784-011fa1f7a735"
+                    index="ecommer_index"
+                    messageFormat="text"
+                    disableCertificateValidation="true">
+                <PatternLayout pattern="%m" />
+            </SplunkHttp>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.example.demo" additivity="false" level="info">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="splunkhttp"/>
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="splunkhttp"/>
+        </Root>
+    </Loggers>
+</Configuration>
