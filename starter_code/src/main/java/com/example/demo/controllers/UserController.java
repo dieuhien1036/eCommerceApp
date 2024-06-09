@@ -46,7 +46,7 @@ public class UserController {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
 		    log.error("Failed to find user{}", username);
-            ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();
         }
         log.info("Successfully found user{}", username);
 

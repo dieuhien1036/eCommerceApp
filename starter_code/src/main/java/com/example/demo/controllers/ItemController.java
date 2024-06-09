@@ -55,7 +55,7 @@ public class ItemController {
 		if (items == null || items.isEmpty()) {
 			log.error("Failed to find item {}", name);
 			log.info("===End get item by name===");
-			ResponseEntity.notFound().build();
+			return ResponseEntity.notFound().build();
 		}
 
 		log.info("Successfully found item {}", name);
